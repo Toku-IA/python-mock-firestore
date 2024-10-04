@@ -1,12 +1,8 @@
 # Python Mock Firestore
 
-An in-memory implementation of the [Python client library](https://github.com/googleapis/python-firestore) for Google Cloud Firestore, intended for use in tests to replace the real thing. This project is in early stages and is only a partial implementation of the real  client library.
+An in-memory implementation of the [Python client library](https://github.com/googleapis/python-firestore) for Google Cloud Firestore, intended for use in tests to replace the real thing. This project is in early stages and is only a partial implementation of the real client library.
 
-To install:
-
-`pip install mock-firestore`
-
-Python 3.6+ is required for it to work.
+Python 3.10 is required for it to work.
 
 ## Usage
 
@@ -20,6 +16,7 @@ mock_db.collection('users').get()
 ```
 
 To reset the store to an empty state, use the `reset()` method:
+
 ```python
 mock_db = MockFirestore()
 mock_db.reset()
@@ -105,28 +102,29 @@ transaction.commit()
 ```
 
 ## Running the tests
-* Create and activate a virtualenv with a Python version of at least 3.6
-* Install dependencies with `pip install -r requirements-dev-minimal.txt`
-* Run tests with `python -m unittest discover tests -t /`
+
+- Create and activate your virtualenv
+- Install dependencies with `pip install -r requirements.txt`
+- Run tests with `python -m unittest discover tests -t /`
 
 ## Contributors
 
-* [Matt Dowds](https://github.com/mdowds)
-* [Chris Tippett](https://github.com/christippett)
-* [Anton Melnikov](https://github.com/notnami)
-* [Ben Riggleman](https://github.com/briggleman)
-* [Steve Atwell](https://github.com/satwell)
-* [ahti123](https://github.com/ahti123)
-* [Billcountry Mwaniki](https://github.com/Billcountry)
-* [Lucas Moura](https://github.com/lsantosdemoura)
-* [Kamil Romaszko](https://github.com/kromash)
-* [Anna Melnikov](https://github.com/notnami)
-* [Carl Chipperfield](https://github.com/carl-chipperfield)
-* [Aaron Loo](https://github.com/domanchi)
-* [Kristof Krenn](https://github.com/KrennKristof)
-* [Ben Phillips](https://github.com/tavva)
-* [Rene Delgado](https://github.com/RDelg)
-* [klanderson](https://github.com/klanderson)
-* [William Li](https://github.com/wli)
-* [Ugo Marchand](https://github.com/UgoM)
-* [Bryce Thornton](https://github.com/brycethornton)
+- [Matt Dowds](https://github.com/mdowds)
+- [Chris Tippett](https://github.com/christippett)
+- [Anton Melnikov](https://github.com/notnami)
+- [Ben Riggleman](https://github.com/briggleman)
+- [Steve Atwell](https://github.com/satwell)
+- [ahti123](https://github.com/ahti123)
+- [Billcountry Mwaniki](https://github.com/Billcountry)
+- [Lucas Moura](https://github.com/lsantosdemoura)
+- [Kamil Romaszko](https://github.com/kromash)
+- [Anna Melnikov](https://github.com/notnami)
+- [Carl Chipperfield](https://github.com/carl-chipperfield)
+- [Aaron Loo](https://github.com/domanchi)
+- [Kristof Krenn](https://github.com/KrennKristof)
+- [Ben Phillips](https://github.com/tavva)
+- [Rene Delgado](https://github.com/RDelg)
+- [klanderson](https://github.com/klanderson)
+- [William Li](https://github.com/wli)
+- [Ugo Marchand](https://github.com/UgoM)
+- [Bryce Thornton](https://github.com/brycethornton)
