@@ -28,6 +28,8 @@ class DocumentSnapshot:
         return self._doc != {}
 
     def to_dict(self) -> Document:
+        if not self.exists:
+            return None
         return self._doc
 
     @property
