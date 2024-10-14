@@ -49,6 +49,8 @@ class DocumentSnapshot:
     def get(self, field_path: str) -> Any:
         if not self.exists:
             return None
+        if field_path in [n for n in "0123456789"]:
+            raise ValueError(f"The firestore API does not support single digits as field_path. {field_path=}")
         else:
             return reduce(operator.getitem, field_path.split("."), self._doc)
 
@@ -60,9 +62,7 @@ class DocumentSnapshot:
 
 
 class DocumentReference:
-    def __init__(
-        self, data: Store, path: List[str], parent: "CollectionReference"
-    ) -> None:
+    def __init__(self, data: Store, path: List[str], parent: "CollectionReference") -> None:
         self._data = data
         self._path = path
         self.parent = parent
