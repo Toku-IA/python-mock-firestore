@@ -90,3 +90,11 @@ class TestDocumentSnapshot(TestCase):
         fs._data = {"foo": {}}
         doc = fs.collection("foo").document("first").get()
         self.assertIs(doc.to_dict(), None)
+
+    def test_documentSnapshot_get_raises_error_for_single_digits(self):
+        fs = MockFirestore()
+        fs._data = {"foo": {"bar": {"3": "value"}}}
+        doc = fs.collection("foo").document("bar").get()
+
+        with self.assertRaises(ValueError):
+            doc.get("3")
