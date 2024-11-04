@@ -2,7 +2,7 @@ from copy import deepcopy
 from functools import reduce
 import operator
 from typing import List, Dict, Any, Optional, Iterable
-from mockfirestore import NotFound
+from mockfirestore import NotFound, InvalidArgument
 from mockfirestore._helpers import (
     Timestamp,
     Document,
@@ -43,8 +43,7 @@ class DocumentSnapshot:
 
     @property
     def read_time(self) -> Timestamp:
-        timestamp = Timestamp.from_now()
-        return timestamp
+        return self.create_time
 
     def get(self, field_path: str) -> Any:
         if not self.exists:
@@ -73,11 +72,13 @@ class DocumentReference:
 
     def get(
         self,
-        field_paths: Optional[Iterable[str]] = None,
-        transaction: Any = None,
-        retry: Any = None,
-        timeout: Optional[float] = None,
+        _field_paths: Optional[Iterable[str]] = None,
+        _transaction: Any = None,
+        _retry: Any = None,
+        _timeout: Optional[float] = None,
     ) -> DocumentSnapshot:
+        if self._path[-1] == "":
+            raise InvalidArgument("Empty document id will throw error in the real firestore API")
         return DocumentSnapshot(self, get_by_path(self._data, self._path))
 
     def delete(self):
